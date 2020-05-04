@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block app_content %}
+	<style media="screen">
+		h3 {
+			text-decoration: underline;
+		}
+		h3:hover {
+			color: blue;
+		}
+	</style>
+
+	<div class="jumbotron" style="color:black">
+    <h2 style="color:black">Latest Coronavirus News</h2>
+  	</div>
+
+  	<div class="container">
+			{% for news_title, news_description, news_image, news_url, countList in context %}
+				{% if news_image %}
+		 			<a> <img src="{{news_image}}" alt=""> </a>
+				{% else %}
+					<a> <img src="static/images/no-pic.jpg" alt=""> </a>
+				{% endif %}
+				<h3 onclick="window.location.href='{{ url_for( 'news_detail_page' , key = countList ) }}';">{{news_title}}</h3>
+		    <h6>{{news_description}}</h6>
+				<br>
+		    {% endfor %}
+  	</div>
+
+
+{% endblock %}

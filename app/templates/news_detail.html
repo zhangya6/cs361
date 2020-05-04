@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block app_content %}
+	<div class="jumbotron" style="color:black">
+    <h2 style="color:black">{{context[2]}}</h2>
+    <article style="color:blue">Author: {{context[1]}} <br> Publishing Date: {{context[6]}}</article>
+  </div>
+
+  	<div class="container">
+      {% if context[5] == None %}
+        <a> <img src="static/images/no-pic.jpg" alt=""></a>
+      {% else %}
+        <a> <img src="{{context[5]}}" alt=""> </a>
+      {% endif %}
+      <article>{{context[7]}}</article>
+      <br>
+      <button type="button" onclick="window.location.href='{{ context[4] }}';">Read More</button>
+  	</div>
+{% endblock %}
